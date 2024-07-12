@@ -1,0 +1,66 @@
+************ installation of kubernetes on ubuntu ****************
+
+> sudo snap install microk8s --classic
+> sudo snap install microk8s --classic --channel=1.28
+> sudo usermod -a -G microk8s $USER
+> sudo chown -f -R $USER ~/ .kube
+> su - $USER
+> microk8s status --wait-ready
+> microk8s kubectl get nodes
+> microk8s kubectl get services
+
+> alias kubectl='microk8s kubectl'  --> alias to microk8s kubectl
+> kubectl get nodes
+
+
+
+*********** basic  commands ***************************************
+
+> kubectl cluster-info     --> to check if cluster is running
+> kubectl get pods         --> to check if pods are running
+> kubectl get deployment   --> to check deployments
+
+
+
+*********** creating a pod *****************************************
+2 ways 
+
+1) 1st method
+
+> kubectl run my-nginx --image nginx   --> any name can be give(my-nginx)
+
+  --> creates a single pod 
+
+
+2) 2nd using yml file 
+
+
+
+*********** creating a deployment ***************************************
+
+> kubectl create deployment my-nginx --image nginx
+
+> kubectl get all     --> shows all info about services, pods, deployments
+
+
+
+*********** cleaning up *************************************************
+
+> kubectl delete pod my-nginx
+> kubectl delete deployment my-nginx
+> kubectl get pods
+> kubectl get deployments
+> kubectl get rs                --> gives replicaset
+
+
+*********** apache deployment ******************************************
+
+> kubectl create deployment my-apache --image httpd
+
+> kubectl scale deployment/my-apache --replicas 2   
+  -->  scaling apache deployment by 2
+
+> kubectl get deploy
+> kubectl get rs
+                                                                                                                                                                                                    
+  

@@ -1,0 +1,17 @@
+********** Cluster IP ************************************
+
+> kubectl get deploy
+> kubectl expose deployment my-apache --port=7777 --target-port=80
+> kubectl get service
+
+
+********** Kubernetes dashboard **************************
+
+new tab 
+> sudo microk8s dashboard-proxy    
+-->opens dashboard ( open link, then paste the token )
+
+old tab
+> kubectl port-forward service/my-apache 8888:7777
+--> in browser localhost:8888 gives output, if ctl+c stops
+

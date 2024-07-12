@@ -1,0 +1,49 @@
+> sudo usermod -a -G microk8s $USER
+> sudo chown -f -R $USER ~/ .kube
+> su - $USER
+
+> mkdir kubernetes-demo
+> cd kubernetes-demo
+> sudo nano nginx-demo2.yml
+> kubectl apply -f nginx-demo2.yml   --> converting yml into pod
+
+> kubectl get pod 
+
+--> "nginx-deployment-7b767787b6-jln9t" is id of the pod
+> kubectl exec -it nginx-deployment-7b767787b6-jln9t /bin/bash
+
+
+# apt-get update
+# apt install curl
+# curl localhost:80
+# exit
+
+*********** deleting a deploy *****************************
+
+> kubectl delete deploy my-apache    --> in second terminal 
+> kubectl get pods                   --> in first terminal
+
+
+
+*********** Code for nginx-demo2.yml ************************
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers: 
+      - name: nginx
+        image: nginx:1.17.3
+        ports:
+        - containerPort: 80

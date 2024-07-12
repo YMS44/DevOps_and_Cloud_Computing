@@ -1,0 +1,28 @@
+> sudo usermod -aG docker $USER
+> newgrp docker
+> sudo systemctl restart docker
+
+--> to run nginx server 
+> docker run -dit -p 8080:80 --name=my_web_app nginx
+
+--> open localhost:8080 in web browser
+
+--> opening nginx terminal
+> docker exec -it my_web_app /bin/bash
+
+# ls
+# cd /usr/share/nginx/
+# cd html
+# ls
+50x.html  index.html
+# cat index.html
+# nano index.html     --> nano gives error as not installed
+# ls
+# mv index.html old.html   --> renaming index.html file
+# ls
+# echo Hello from CDAC > index.html   --> changing content in index.html
+# ls
+# exit
+
+> docker stop 475
+> docker rm 475
